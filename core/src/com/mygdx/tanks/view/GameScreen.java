@@ -3,24 +3,26 @@ package com.mygdx.tanks.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.tanks.model.bullet.Bullet;
 import com.mygdx.tanks.model.SpriteCreator;
+import com.mygdx.tanks.model.bullet.Bullet;
 import com.mygdx.tanks.model.tank.Tank;
+import com.mygdx.tanks.model.tank.TankBuilder;
+import com.mygdx.tanks.model.tank.TankBuilderImpl;
 import com.mygdx.tanks.model.tank.TankCreator;
 
 public class GameScreen implements Screen {
     private Batch batch;
-    private SpriteCreator<Tank> tankCreator = new TankCreator();
     private Tank tank;
+    private TankBuilder tankBuilder = new TankBuilderImpl();
+    private SpriteCreator<Tank> tankCreator = new TankCreator(tankBuilder);
 
     @Override
     public void show() {
-        Texture yellowTankTexture = new Texture(Gdx.files.internal("yellow_tank.jpg"));
         batch = new SpriteBatch();
-        tank = tankCreator.getInstance(yellowTankTexture, 0f, 0f, 22f, 24f);
+        tankBuilder.setCoords(0f, 0f);
+        tank = tankCreator.getInstance();
     }
 
     @Override

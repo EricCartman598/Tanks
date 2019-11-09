@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tank extends GameObject {
-    private int bulletsCount = 1;
+    private int bulletsCount;
     private int velocity;
     private Color color;
     private List<Bullet> shootedBullets = new ArrayList<>();
@@ -30,6 +30,13 @@ public class Tank extends GameObject {
     public Tank(Texture texture, float x, float y, float width, float height) {
         super(texture, x, y, width, height);
         bulletTexture = new Texture(Gdx.files.internal("bullet.png"));
+    }
+
+    public Tank(Texture texture, float x, float y, float width, float height, int bulletsCount, int velocity, Color color) {
+        this(texture, x, y, width, height);
+        this.bulletsCount = bulletsCount;
+        this.velocity = velocity;
+        this.color = color;
     }
 
     @Override
