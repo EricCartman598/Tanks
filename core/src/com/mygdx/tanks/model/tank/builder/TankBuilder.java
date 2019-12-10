@@ -1,10 +1,11 @@
-package com.mygdx.tanks.model.tank;
+package com.mygdx.tanks.model.tank.builder;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.tanks.model.tank.Tank;
 
 public interface TankBuilder {
-    TankBuilder setCoords(float x, float y);
+    TankBuilder setCoordinates(float x, float y);
 
     TankBuilder setDimensions(float width, float height);
 

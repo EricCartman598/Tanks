@@ -1,21 +1,22 @@
-package com.mygdx.tanks.model.tank;
+package com.mygdx.tanks.model.tank.builder;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.tanks.model.tank.Tank;
 
-public class TankBuilderImpl implements TankBuilder {
-    private Texture texture = new Texture(Gdx.files.internal("yellow_tank.jpg"));
-    private float x = 0f;
-    private float y = 0f;
-    private float width = 22f;
-    private float height = 24f;
-    private int bulletsCount = 1;
-    private int velocity = 2;
-    private Color color = new Color(0f, 1f, 0f, 1f);
+public abstract class TankBuilderImpl implements TankBuilder {
+    Texture texture = new Texture(Gdx.files.internal("yellow_tank.jpg"));
+    float x = 0f;
+    float y = 0f;
+    float width = 22f;
+    float height = 24f;
+    int bulletsCount = 1;
+    int velocity = 2;
+    Color color = new Color(0f, 1f, 0f, 1f);
 
     @Override
-    public TankBuilder setCoords(float x, float y) {
+    public TankBuilder setCoordinates(float x, float y) {
         this.x = x;
         this.y = y;
         return this;
@@ -53,8 +54,5 @@ public class TankBuilderImpl implements TankBuilder {
     }
 
     @Override
-    public Tank build() {
-        return new Tank(texture, x, y, width, height, bulletsCount, velocity, color);
-    }
-
+    public abstract Tank build();
 }
