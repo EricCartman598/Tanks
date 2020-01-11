@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tank extends GameObject {
+
     int bulletsCount;
     int velocity;
     List<Bullet> shootedBullets = new ArrayList<>();
